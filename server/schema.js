@@ -8,7 +8,7 @@ const UserType = new GraphQLObjectType({
     user_name: { type: GraphQLString },
     user_email: { type: GraphQLString },
     user_password: { type: GraphQLString },
-    board: { type: BoardType }
+    column: { type: BoardType }
   })
 });
 
@@ -19,5 +19,25 @@ const BoardType = new GraphQLObjectType({
     board_id: { type: GraphQLInt },
     board_name: { type: GraphQLString },
     column: { type: ColumnType },
+  })
+}); 
+
+/* Column Schema */
+const ColumnType = new GraphQLObjectType({
+  name: 'Column',
+  fields: () => ({
+    column_id: { type: GraphQLInt },
+    column_name: { type: GraphQLString },
+    ticket: { type: TicketType },
+  })
+}); 
+
+/* Ticket Schema */
+const TicketType = new GraphQLObjectType({
+  name: 'Ticket',
+  fields: () => ({
+    ticket_id: { type: GraphQLInt },
+    ticket_name: { type: GraphQLString },
+    ticket_text: { type: GraphQLString },
   })
 }); 
