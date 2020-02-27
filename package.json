@@ -2,7 +2,7 @@
   "name": "ticketingboardapp",
   "version": "1.0.0",
   "description": "this app is a ticketing board where users sign-in and access their boards. They can create new boards, add columns and tickets,  and sign out. Compareable to trello.",
-  "main": "index.js",
+  "main": "server/server.js",
   "directories": {
     "test": "test"
   },
