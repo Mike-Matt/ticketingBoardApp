@@ -49,7 +49,9 @@ const RootQuery = new GraphQLObjectType({
      user: {
        type: UserType,
        args: { user_email: { type: GraphQLString }, user_password: { type: GraphQLString }},
-       resolve(parent, args)
+       resolve(parent, args) {
+         // get from googleAuth API
+       }
      }
   }
 });
