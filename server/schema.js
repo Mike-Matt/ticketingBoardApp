@@ -1,4 +1,4 @@
-const { GraphQLObjectType, GraphQLInt, GraphQLString } = require('graphql')
+const { GraphQLObjectType, GraphQLInt, GraphQLString, GraphQLSchema } = require('graphql')
 
 //User
 const UserType = new GraphQLObjectType({
@@ -40,4 +40,17 @@ const TicketType = new GraphQLObjectType({
     ticket_name: { type: GraphQLString },
     ticket_text: { type: GraphQLString }
   })
+})
+
+const RootQuery = new GraphQLObjectType({
+  name: 'RootQueryType',
+  fields: {
+    user: {
+      type: UserType,
+      args: {user_email: {type: GraphQLString}, user_password: {type: GraphQLString}},
+      resolve(parent, args) {
+        //code to get data from Google API
+      }
+    }
+  }
 })
