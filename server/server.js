@@ -1,6 +1,8 @@
 const express = require('express');
 const graphqlHTTP = require('express-graphql');
 
+const TicketingAppSchema = require('./schema.js');
+
 const PORT = 4000;
 
 const app = express();
