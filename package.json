@@ -2,12 +2,12 @@
   "name": "ticketingboardapp",
   "version": "1.0.0",
   "description": "this app is a ticketing board where users sign-in and access their boards. They can create new boards, add columns and tickets,  and sign out. Compareable to trello.",
-  "main": "index.js",
+  "main": "server/server.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon server/server.js"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,11 @@
   "bugs": {
     "url": "https://github.com/Mike-Matt/ticketingBoardApp/issues"
   },
-  "homepage": "https://github.com/Mike-Matt/ticketingBoardApp#readme"
+  "homepage": "https://github.com/Mike-Matt/ticketingBoardApp#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-graphql": "^0.9.0",
+    "graphql": "^14.6.0",
+    "nodemon": "^2.0.2"
+  }
 }
