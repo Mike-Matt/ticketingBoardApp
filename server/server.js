@@ -16,3 +16,5 @@ app.use('/graphql',graphqlHTTP({
 app.listen(PORT, () => {
   console.log(`Express GraphQL Server started on port ${PORT}`);
 });
+
+
