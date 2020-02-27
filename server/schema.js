@@ -41,7 +41,7 @@ const TicketType = new GraphQLObjectType({
     ticket_text: { type: GraphQLString }
   })
 })
-
+//Root Query
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {
@@ -53,4 +53,8 @@ const RootQuery = new GraphQLObjectType({
       }
     }
   }
+})
+//Export schema
+module.exports = new GraphQLSchema({
+  query: RootQuery
 })
