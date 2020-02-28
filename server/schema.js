@@ -59,6 +59,7 @@ const RootQuery = new GraphQLObjectType({
       },
       resolve(parent, args) {
         // get from googleAuth API
+        
       }
     }
   }
