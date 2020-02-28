@@ -1,14 +1,15 @@
-const express = require('express')
-const graphqlHTTP = require('express-graphql')
-const app = express()
-const PORT = 4000
-const { TicketingAppSchema } = require('./schema.js')
+const express = require("express");
+const { ApolloServer } = require("apollo-server-express");
+const TicketingAppSchema = require("./schema.js");
 
-app.use('/graphql', graphqlHTTP({
-  schema: TicketingAppSchema,
-  graphiql: true
-}))
+const app = express();
 
-app.listen(PORT, ()=>{
-  console.log(`Server listening on PORT ${PORT}`)
-})
+const PORT = 4000;
+
+const server = new ApolloServer({ schema: TicketingAppSchema });
+
+server.applyMiddleware({ app });
+
+app.listen({ port: PORT }, () =>
+  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
+);
