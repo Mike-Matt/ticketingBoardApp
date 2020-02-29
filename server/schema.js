@@ -1,60 +1,61 @@
-const { GraphQLObjectType, GraphQLInt, GraphQLString, GraphQLSchema } = require('graphql')
+const { gql } = require('apollo-server')
 
-//User
-const UserType = new GraphQLObjectType({
-  name: 'User',
-  fields: ()=> ({
-    user_id: { type: GraphQLInt },
-    user_name: { type: GraphQLString },
-    user_email: { type: GraphQLString },
-    user_password: { type: GraphQLString },
-    board: { type: BoardType }
-  })
-})
-
-//Board
-const BoardType = new GraphQLObjectType({
-  name: 'Board',
-  fields: ()=> ({
-    board_id: { type: GraphQLInt },
-    board_name: { type: GraphQLString },
-    column: { type: ColumnType }
-  })
-})
-
-//Column
-const ColumnType = new GraphQLObjectType({
-  name: 'Column',
-  fields: ()=> ({
-    column_id: { type: GraphQLInt},
-    column_name: { type: GraphQLString },
-    ticket: { type: TicketType }
-  })
-})
-
-//Ticket
-const TicketType = new GraphQLObjectType({
-  name: 'Ticket',
-  fields: ()=> ({
-    ticket_id: { type: GraphQLInt},
-    ticket_name: { type: GraphQLString },
-    ticket_text: { type: GraphQLString }
-  })
-})
-//Root Query
-const RootQuery = new GraphQLObjectType({
-  name: 'RootQueryType',
-  fields: {
-    user: {
-      type: UserType,
-      args: {user_email: {type: GraphQLString}, user_password: {type: GraphQLString}},
-      resolve(parent, args) {
-        //code to get data from Google API
-      }
-    }
+const typeDefs = gql`
+  type User {
+    name: String
+    email: String!
+    password: String!
+    boards: [Board]
   }
-})
+  type Board {
+    name: String
+    columns: [Column]
+  }
+  type Column {
+    name: String!
+    tickets: [Ticket]
+  }
+  type Ticket {
+    name: String!
+    text: String
+  }
+  type Query {
+    user(email: String!, password: String!): [Board]
+  }
+  type Mutation {
+    addUser(userName: String, userEmail: String!, userPassword: String!): userUpdateResponse!
+    addBoard(boardName: String): boardUpdateResponse!
+    deleteBoard(boardName: String): boardUpdateResponse!
+    updateBoard(boardName: String): boardUpdateResponse!
+    addColumn(columnName: String): columnUpdateResponse!
+    deleteColumn(columnName: String): columnUpdateResponse!
+    updateColumn(columnName: String): columnUpdateResponse!
+    addTicket(ticketName: String): ticketUpdateResponse!
+    deleteTicket(ticketName: String): ticketUpdateResponse!
+    updateTicket(ticketName: String): ticketUpdateResponse!
+  }
+  type userUpdateResponse {
+    success: Boolean!
+    message: String
+  }
+  type boardUpdateResponse {
+    success: Boolean!
+    message: String
+    boards: [Board]
+  }
+  type columnUpdateResponse {
+    success: Boolean!
+    message: String
+    columns: [Column]
+  }
+  type ticketUpdateResponse {
+    success: Boolean!
+    message: String
+    tickets: [Ticket]
+  }
+`;
+
+//Root Query
+
 //Export schema
-module.exports = new GraphQLSchema({
-  query: RootQuery
-})
+module.exports = typeDefs
