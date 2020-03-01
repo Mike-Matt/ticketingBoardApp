@@ -1,9 +1,11 @@
 const express = require("express");
 const resolvers = require("./resolvers");
 const { ApolloServer } = require("apollo-server-express");
+const typeDefs = require("./schema.js");
+
 const app = express();
 const PORT = 4000;
-const typeDefs = require("./schema.js");
+
 
 const server = new ApolloServer({ typeDefs });
 server.applyMiddleware({ app });
