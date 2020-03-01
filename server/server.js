@@ -2,7 +2,9 @@ const express = require("express");
 const resolvers = require("./resolvers");
 const { ApolloServer } = require("apollo-server-express");
 const typeDefs = require("./schema.js");
+const { password } = require('../.env');
 const mongoose = require("mongoose");
+
 
 const app = express();
 const PORT = 4000;
@@ -10,7 +12,7 @@ const PORT = 4000;
 const server = new ApolloServer({ typeDefs });
 
 mongoose.connect(
-  "mongodb+srv://matthewyee:mattABtim99@mylife-ajkjc.mongodb.net/test?retryWrites=true&w=majority",
+  `mongodb+srv://matthewyee:${password}@mylife-ajkjc.mongodb.net/test?retryWrites=true&w=majority`,
   { useNewUrlParser: true, useUnifiedTopology: true },
   (err) => {
     if (err) {
