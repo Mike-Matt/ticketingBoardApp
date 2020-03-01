@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server')
+const { gql } = require("apollo-server");
 
 const typeDefs = gql`
   type User {
@@ -23,7 +23,11 @@ const typeDefs = gql`
     user(email: String!, password: String!): [Board]
   }
   type Mutation {
-    addUser(userName: String, userEmail: String!, userPassword: String!): userUpdateResponse!
+    addUser(
+      userName: String
+      userEmail: String!
+      userPassword: String!
+    ): userUpdateResponse!
     addBoard(boardName: String): boardUpdateResponse!
     deleteBoard(boardName: String): boardUpdateResponse!
     updateBoard(boardName: String): boardUpdateResponse!
@@ -58,4 +62,4 @@ const typeDefs = gql`
 //Root Query
 
 //Export schema
-module.exports = typeDefs
+module.exports = typeDefs;
