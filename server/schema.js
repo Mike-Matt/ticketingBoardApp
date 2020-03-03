@@ -59,7 +59,5 @@ const typeDefs = gql`
   }
 `;
 
-//Root Query
-
 //Export schema
 module.exports = typeDefs;
