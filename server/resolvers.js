@@ -1,7 +1,7 @@
 module.exports = {
   Query: {
     user: (_,{email, password}) => {
-      user.findOne(email, password)
+      return user.findOne(email, password)
     }
   }
 }
