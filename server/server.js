@@ -1,19 +1,20 @@
 const express = require('express')
+const resolvers = require('./resolvers.js')
 const { ApolloServer } = require('apollo-server-express')
+const typeDefs  = require('./schema.js')
+require('dotenv').config()
+const mongoose = require('mongoose')
 const app = express()
 const PORT = 4000
-const typeDefs  = require('./schema.js')
-const resolvers = require('./resolvers.js')
-const mongoose = require('mongoose')
-require('dotenv').config()
 
 const server = new ApolloServer({ typeDefs, resolvers })
-mongoose.connect(`mongodb+srv://michael_thompson:${process.env.MongoDB_password}@mylife-ajkjc.mongodb.net/test?retryWrites=true&w=majority`, {useNewUrlParser: true, useUnifiedTopology: true }, (err)=>{
+
+mongoose.connect(`mongodb+srv://${process.env.MongoDB_username}:${process.env.MongoDB_password}@mylife-ajkjc.mongodb.net/test?retryWrites=true&w=majority`, {useNewUrlParser: true, useUnifiedTopology: true }, (err)=>{
   if(err) {
     console.log('Error occurred while connecting to MongoDB Atlas...\n',err);
   }
   else{
-    console.log('Connected...');
+    console.log('Connected to the DB...');
   }
 })
 server.applyMiddleware({ app })
