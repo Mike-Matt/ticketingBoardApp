@@ -1,3 +1,4 @@
+
 const { user } = require('../db/models/models.js')
 
 module.exports = {
@@ -12,3 +13,5 @@ module.exports = {
 
 
 
+
+// {email: email, password: password}
