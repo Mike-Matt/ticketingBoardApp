@@ -9,7 +9,8 @@ const mongoose = require("mongoose");
 const app = express();
 const PORT = 4000;
 
-const server = new ApolloServer({ typeDefs });
+const server = new ApolloServer({ typeDefs, resolvers })
+
 
 mongoose.connect(
   `mongodb+srv://matthewyee:${process.env.MONGODB_PASSWORD}@mylife-ajkjc.mongodb.net/test?retryWrites=true&w=majority`,
