@@ -9,7 +9,7 @@ const PORT = 4000
 
 const server = new ApolloServer({ typeDefs, resolvers })
 
-mongoose.connect(`mongodb+srv://${process.env.MongoDB_username}:${process.env.MongoDB_password}@mylife-ajkjc.mongodb.net/test?retryWrites=true&w=majority`, {useNewUrlParser: true, useUnifiedTopology: true }, (err)=>{
+mongoose.connect(`mongodb+srv://${process.env.MongoDB_USERNAME}:${process.env.MongoDB_PASSWORD}@mylife-ajkjc.mongodb.net/test?retryWrites=true&w=majority`, {useNewUrlParser: true, useUnifiedTopology: true }, (err)=>{
   if(err) {
     console.log('Error occurred while connecting to MongoDB Atlas...\n',err);
   }
