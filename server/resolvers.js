@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2e5932f53758c6520de7538252fd156955edcd88
 const { user } = require('../db/models/models.js')
 
 module.exports = {
