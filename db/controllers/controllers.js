@@ -1,6 +1,6 @@
-const { user } = require('../models/models');
+// const { user } = require('../models/models');
 
-const findUser = (user) => {
-  user.findOne()
-}
+// const findUser = (user) => {
+//   user.findOne()
+// }
 
