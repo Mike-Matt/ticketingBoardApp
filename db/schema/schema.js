@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 exports.userSchema = new Schema({
@@ -23,4 +23,4 @@ exports.userSchema = new Schema({
       }
     ]
   }
-});
+})

@@ -1,15 +1,15 @@
-const { user } = require('../db/models/models');
+
+const { user } = require('../db/models/models.js')
 
 module.exports = {
   Query: {
     user: (_,{email, password}) => {
-      console.log('Working')
       console.log(email, password)
-      return user.findOne({ email }).exec();
+      return user.find({email: email, password: password})
     }
   }
 }
-
+//
 
 
 
