@@ -23,4 +23,4 @@ exports.userSchema = new Schema({
       }
     ]
   }
-})
+}, { collection : 'User' })

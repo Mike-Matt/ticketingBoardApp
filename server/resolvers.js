@@ -1,13 +1,14 @@
 const { user }  = require('../db/models/models.js')
 
+
 module.exports = {
   Query: {
     user: (__, userArgs) => {
       const userPassword = userArgs.password
       const userEmail = userArgs.email
-      return user.find()
+      return user.findOne({_id: '5e5ef3711c9d440000aaff30'})
       .then(
-      userData => console.log(userData)
+      response => console.log(response, userEmail, userPassword)
       )
       .catch(err=>{
         console.log(err)
@@ -19,8 +20,6 @@ module.exports = {
 //[0]._id
 //{password: userPassword, email: userEmail}
 //userArgs, userPassword, userEmail)
-
-
 
 /*
 Query: {
