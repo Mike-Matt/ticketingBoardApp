@@ -8,17 +8,10 @@ const app = express();
 const PORT = 4000;
 const server = new ApolloServer({ typeDefs, resolvers });
 
-mongoose.connect(
-  `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@mylife-ajkjc.mongodb.net/test?retryWrites=true&w=majority`,
-  { useNewUrlParser: true, useUnifiedTopology: true },
-  err => {
-    if (err) {
-      console.log("Error occurred while connecting to MongoDB Atlas...\n", err);
-    } else {
-      console.log("Connected to the DB...");
-    }
-  }
-);
+mongoose
+  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("db connected"))
+  .catch(err => console.error(err));
 
 server.applyMiddleware({ app });
 
